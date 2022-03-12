@@ -30,6 +30,7 @@ pub(crate) fn matches_comparator(cmp: &Comparator, ver: &Version) -> bool {
 fn matches_impl(cmp: &Comparator, ver: &Version) -> bool {
     match cmp.op {
         Op::Exact | Op::Wildcard => matches_exact(cmp, ver),
+        Op::Exclude => !matches_exact(cmp, ver),
         Op::Greater => matches_greater(cmp, ver),
         Op::GreaterEq => matches_exact(cmp, ver) || matches_greater(cmp, ver),
         Op::Less => matches_less(cmp, ver),

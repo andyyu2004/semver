@@ -280,6 +280,8 @@ fn op(input: &str) -> (Op, &str) {
         (Op::Tilde, &input[1..])
     } else if bytes.get(0) == Some(&b'^') {
         (Op::Caret, &input[1..])
+    } else if bytes.get(0) == Some(&b'!') && bytes.get(1) == Some(&b'=') {
+        (Op::Exclude, &input[2..])
     } else {
         (Op::DEFAULT, input)
     }

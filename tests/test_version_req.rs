@@ -76,6 +76,14 @@ fn test_exact() {
 }
 
 #[test]
+fn test_exclude() {
+    let ref r = req("!=1.0.0");
+    assert_to_string(r, "!=1.0.0");
+    assert_match_none(r, &["1.0.0"]);
+    assert_match_all(r, &["1.0.1", "0.9.9", "0.10.0", "0.1.0"]);
+}
+
+#[test]
 pub fn test_greater_than() {
     let ref r = req(">= 1.0.0");
     assert_to_string(r, ">=1.0.0");

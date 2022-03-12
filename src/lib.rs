@@ -252,6 +252,7 @@ pub struct Comparator {
 #[cfg_attr(not(no_non_exhaustive), non_exhaustive)]
 pub enum Op {
     Exact,
+    Exclude,
     Greater,
     GreaterEq,
     Less,
