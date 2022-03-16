@@ -36,7 +36,7 @@ fn assert_match_none(req: &VersionReq, versions: &[&str]) {
 #[test]
 fn test_basic() {
     let ref r = req("1.0.0");
-    assert_to_string(r, "^1.0.0");
+    assert_to_string(r, "1.0.0");
     assert_match_all(r, &["1.0.0", "1.1.0", "1.0.1"]);
     assert_match_none(r, &["0.9.9", "0.10.0", "0.1.0", "1.0.0-pre", "1.0.1-pre"]);
 }
@@ -131,7 +131,7 @@ pub fn test_multiple() {
     assert_match_none(r, &["0.0.8", "2.5.4"]);
 
     let ref r = req("0.3.0, 0.4.0");
-    assert_to_string(r, "^0.3.0, ^0.4.0");
+    assert_to_string(r, "0.3.0, 0.4.0");
     assert_match_none(r, &["0.0.8", "0.3.0", "0.4.0"]);
 
     let ref r = req("<= 0.2.0, >= 0.5.0");
@@ -139,7 +139,7 @@ pub fn test_multiple() {
     assert_match_none(r, &["0.0.8", "0.3.0", "0.5.1"]);
 
     let ref r = req("0.1.0, 0.1.4, 0.1.6");
-    assert_to_string(r, "^0.1.0, ^0.1.4, ^0.1.6");
+    assert_to_string(r, "0.1.0, 0.1.4, 0.1.6");
     assert_match_all(r, &["0.1.6", "0.1.9"]);
     assert_match_none(r, &["0.1.0", "0.1.4", "0.2.0"]);
 
