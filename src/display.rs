@@ -55,7 +55,7 @@ impl Display for Comparator {
             Op::Less => "<",
             Op::LessEq => "<=",
             Op::Tilde => "~",
-            Op::Caret => "^",
+            Op::Caret => "",
             Op::Wildcard => "",
             #[cfg(no_non_exhaustive)]
             Op::__NonExhaustive => unreachable!(),
