@@ -48,7 +48,7 @@ impl Display for VersionReq {
 impl Display for Comparator {
     fn fmt(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
         let op = match self.op {
-            Op::Exact => "=",
+            Op::Exact => "==",
             Op::Exclude => "!=",
             Op::Greater => ">",
             Op::GreaterEq => ">=",

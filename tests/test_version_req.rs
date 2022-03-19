@@ -50,28 +50,28 @@ fn test_default() {
 
 #[test]
 fn test_exact() {
-    let ref r = req("=1.0.0");
-    assert_to_string(r, "=1.0.0");
+    let ref r = req("==1.0.0");
+    assert_to_string(r, "==1.0.0");
     assert_match_all(r, &["1.0.0"]);
     assert_match_none(r, &["1.0.1", "0.9.9", "0.10.0", "0.1.0", "1.0.0-pre"]);
 
-    let ref r = req("=0.9.0");
-    assert_to_string(r, "=0.9.0");
+    let ref r = req("==0.9.0");
+    assert_to_string(r, "==0.9.0");
     assert_match_all(r, &["0.9.0"]);
     assert_match_none(r, &["0.9.1", "1.9.0", "0.0.9", "0.9.0-pre"]);
 
-    let ref r = req("=0.0.2");
-    assert_to_string(r, "=0.0.2");
+    let ref r = req("==0.0.2");
+    assert_to_string(r, "==0.0.2");
     assert_match_all(r, &["0.0.2"]);
     assert_match_none(r, &["0.0.1", "0.0.3", "0.0.2-pre"]);
 
-    let ref r = req("=0.1.0-beta2.a");
-    assert_to_string(r, "=0.1.0-beta2.a");
+    let ref r = req("==0.1.0-beta2.a");
+    assert_to_string(r, "==0.1.0-beta2.a");
     assert_match_all(r, &["0.1.0-beta2.a"]);
     assert_match_none(r, &["0.9.1", "0.1.0", "0.1.1-beta2.a", "0.1.0-beta2"]);
 
-    let ref r = req("=0.1.0+meta");
-    assert_to_string(r, "=0.1.0");
+    let ref r = req("==0.1.0+meta");
+    assert_to_string(r, "==0.1.0");
     assert_match_all(r, &["0.1.0", "0.1.0+meta", "0.1.0+any"]);
 }
 
